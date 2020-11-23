@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import TodoItems from "./TodoItems"
+import TodoItems from "./TodoItems";
+import "./TodoList.css";
 
 
 class Todolist extends Component {
@@ -14,8 +15,7 @@ class Todolist extends Component {
          
 }
 
-
-    addItem(e) {
+        addItem(e) {
         if (this._inputElement.value !== ""){
             var newItem = {
                 text: this._inputElement.value,
@@ -40,14 +40,16 @@ class Todolist extends Component {
 
     render() {
         return (
-            <div className="todolistmain">
+            <div className="todoListMain">
                 <div className="header">
                     <form onSubmit={this.addItem} >
-                        <input ref={this.reference} placeholder="Enter Tasks"></input>
-                        <button type="submit">Add</button>
+                        <input className="no-outline" ref={this.reference} placeholder="Enter Tasks"></input>
+                        <button type="submit" className="no-outline">Add</button>
                     </form>
                 </div>         
-                    <TodoItems  entries={this.state.items}/>
+                    <TodoItems  entries={this.state.items} 
+                    delete={this.deleteItem}
+                    />
             </div>
         );
     }
